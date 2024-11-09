@@ -1,0 +1,53 @@
+.BooksContainer {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.SearchContainer {
+  border: 1px solid rgb(214, 211, 211);
+  margin-bottom: 20px;
+  border-radius: 24px;
+  width: 50%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 10px 2px 20px;
+}
+.SearchBox {
+  outline: none;
+  border: transparent;
+  height: 100%;
+  width: 100%;
+}
+.SearchIcon {
+  color: rgb(122, 115, 115);
+}
+.BooksListContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  height: calc(100vh - 200px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 20px;
+}
+.NoDataFound {
+  width: 350px;
+  height: 350px;
+}
+.LoadingContainer {
+  display: flex;
+  align-items: center;
+}
+.InfiniteLoadingContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.LoadingCard {
+  width: 46%;
+  height: 150px;
+}
