@@ -1,0 +1,96 @@
+.screen1 {
+  background-color: black;
+  width: 100vw;
+  height: 50vh;
+}
+
+.screen2 {
+  background-color: #9494cb;
+  width: 100vw;
+  height: 50vh;
+}
+.boxContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  position: absolute;
+  top: 13%;
+  left: 40%;
+  background-color: white;
+  width: 400px;
+  height: fit-content;
+  border-radius: 10px;
+}
+.parent {
+  position: relative;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 90%;
+  height: 40px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.titleText {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.actionButton,
+.loginButton {
+  width: 45%;
+  border-radius: 8px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  height: 46px;
+  cursor: pointer;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.loginUsername,
+.loginPassword {
+  width: 80%;
+  height: 45px;
+  border-radius: 14px;
+  outline: none;
+  border: 1px solid rgb(196, 194, 194);
+  padding-left: 14px;
+  margin-top: 26px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.forgotPassword {
+  text-decoration: none;
+  font-size: 16px;
+  width: 80%;
+  margin-top: 8px;
+  color: rgb(38, 129, 181);
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.loginButton {
+  width: 84%;
+  margin-top: 24px;
+  outline: none;
+  border: none;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
+  margin-bottom: 40px;
+}
+
+.errorMessage {
+  color: red;
+  width: 100%;
+  margin-left: 70px;
+  padding-top: 4px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+}

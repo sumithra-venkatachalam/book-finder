@@ -1,0 +1,16 @@
+.HeaderContainer {
+  display: flex;
+  background-color: rgb(23, 23, 71);
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+.HeaderTitle {
+  font-size: 24px;
+  color: white;
+  margin: 0px;
+}
+.LogoutIcon {
+  color: white;
+  cursor: pointer;
+}
