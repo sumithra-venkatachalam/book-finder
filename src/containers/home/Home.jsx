@@ -7,6 +7,8 @@ import Header from "../../components/header/Header";
 import BookCard from "../../components/book_card/BookCard";
 import loadingGIF from "../../assets/loading.gif";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useSelector, useDispatch } from "react-redux";
+import { username } from "../../redux/usernameSlice";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,6 +20,8 @@ function Home() {
     totalCount: 0,
     hasMore: false,
   });
+  const name = useSelector((state) => state.username.value)
+  const dispatch = useDispatch()
  
   const {CancelToken} = axios;
   let cancel;
@@ -146,7 +150,7 @@ function Home() {
 
   return (
     <div className="HomeContainer">
-      <Header />
+      <Header name={name} />
       <div className="BooksContainer">
         <div className="SearchContainer">
           <input

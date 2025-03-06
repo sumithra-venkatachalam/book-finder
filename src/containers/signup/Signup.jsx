@@ -2,9 +2,11 @@ import './Signup.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { username } from '../../redux/usernameSlice';
 
 function Signup() {
-  const [username, setUsername] = useState('');
+  
   const [loginPassword, setLoginPassword] = useState('');
   const [signupUsername, setSignupUsername] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
@@ -13,8 +15,10 @@ function Signup() {
   const [loginPasswordError, setLoginPasswordError] = useState('');
   const [signupUsernameError, setSignupUsernameError] = useState('');
   const [signupPasswordError, setSignupPasswordError] = useState('');
-  const [signupConfirmPasswordError, setSignupConfirmPasswordError] =
-    useState('');
+  const [signupConfirmPasswordError, setSignupConfirmPasswordError] = useState('');
+
+  const name = useSelector((state) => state.username.value)
+  const dispatch = useDispatch()
 
   const loginUsernameFunc = (e) => {
     setUsername(e.target.value);
@@ -46,15 +50,15 @@ function Signup() {
   const goToDomainListing2 = () => {
     let hasError = false;
 
-    if (signupUsername.length === 0) {
+    if (name.length === 0) {
       hasError = true;
       setSignupUsernameError('UserName is required');
-    } else if (signupUsername.length < 5) {
+    } else if (name.length < 5) {
       hasError = true;
       setSignupUsernameError(
         'Username characters must be greater than 5 characters'
       );
-    } else if (signupUsername.length > 25) {
+    } else if (name.length > 25) {
       hasError = true;
       setSignupUsernameError(
         'Username characters should be less than 25 characters'
@@ -81,21 +85,21 @@ function Signup() {
       );
     }
 
-    if (hasError === false) navigate('/');
+    if (hasError === false) navigate('/home');
   };
 
   const goToDomainListing1 = () => {
     let hasError = false;
 
-    if (username.length === 0) {
+    if (name.length === 0) {
       hasError = true;
       setLoginUsernameError('UserName is required');
-    } else if (username.length < 5) {
+    } else if (name.length < 5) {
       hasError = true;
       setLoginUsernameError(
         'Username characters must be greater than 5 characters'
       );
-    } else if (username.length > 25) {
+    } else if (name.length > 25) {
       hasError = true;
       setLoginUsernameError(
         'Username characters should be less than 25 characters'
@@ -112,7 +116,7 @@ function Signup() {
       hasError = true;
       setLoginPasswordError('Password should not exceed 20 characters');
     }
-    if (hasError === false) navigate('/');
+    if (hasError === false) navigate('/home');
   };
 
   return (
@@ -166,8 +170,8 @@ function Signup() {
                 type="text"
                 placeholder="Username"
                 required
-                onChange={loginUsernameFunc}
-                value={username}
+                onChange={(e) => dispatch(username(e.target.value))}
+                value={name}
               />
               <span className="errorMessage">{loginUsernameError}</span>
               <input

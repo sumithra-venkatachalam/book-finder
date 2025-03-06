@@ -14,3 +14,12 @@
   color: white;
   cursor: pointer;
 }
+.loggedInUsername {
+  margin: 0px;
+  margin-right: 20px;
+  color: white;
+}
+.nameAndIcon {
+  display: flex;
+  align-items: center;
+}
