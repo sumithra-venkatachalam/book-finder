@@ -4,20 +4,19 @@ import './BookCard.css';
 
 function BookCard(props) {
   const {
-    title,
+    title, 
     author_name,
     first_publish_year,
     ratings_count,
-    edition_count,
+    edition_count, 
     cover_i,
     ratings_average,
   } = props;
 
   const getRatings = () =>
     Array(Math.floor(ratings_average))
-      .fill()
-      .map((_, i) => <FontAwesomeIcon icon={faStar} />);
-
+      .fill(<FontAwesomeIcon icon={faStar} />);
+     
   return (
     <div className="BookCardContainer">
       <img

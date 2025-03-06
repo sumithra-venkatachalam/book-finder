@@ -11,46 +11,35 @@ import InfiniteScroll from "react-infinite-scroll-component";
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [booksList, setBooksList] = useState([]);
-  const [paginationDetails, setPaginationDetails] = useState({
-    page: 1,
+  const [paginationDetails, setPaginationDetails] = useState({ 
+    page: 1, 
     limit: 24,
     search: "",
     totalCount: 0,
     hasMore: false,
   });
-  const [cancelToken, setCancelToken] = useState(null);
+ 
+  const {CancelToken} = axios;
+  let cancel;
 
   const getBooksList = (page, search) => {
-    if (search?.length === 0) {
-      setPaginationDetails({
-        page: 1,
-        limit: 24,
-        search: "",
-        totalCount: 0,
-        hasMore: false,
-      });
-      setBooksList([]);
-      return;
-    }
     if (page === 1) setIsLoading(true);
-
-    if (cancelToken) {
-      cancelToken.cancel("Operation canceled due to new request.");
+    if(cancel) {
+      cancel();
     }
-
-    const newCancelToken = axios.CancelToken.source();
-    setCancelToken(newCancelToken);
+  
     axios
       .get(
         `https://openlibrary.org/search.json?title=${search}&page=${page}&limit=${paginationDetails?.limit}&fields=title,author_name,first_publish_year,ratings_count,edition_count,cover_i,ratings_average`,
         {
-          cancelToken: newCancelToken.token,
+          cancelToken: new CancelToken((c) => (cancel = c)),
         }
       )
       .then((response) => {
         let currentList = [];
         if (page === 1) {
           currentList = response?.data?.docs || [];
+          console.log("currentlist",response?.data)
         } else {
           currentList = [...booksList, ...(response?.data?.docs || [])];
         }
@@ -73,7 +62,6 @@ function Home() {
           console.error("Error fetching data:", error);
           setIsLoading(false);
         }
-        setBooksList([]);
       });
   };
 
@@ -85,7 +73,7 @@ function Home() {
     if (e.target.value?.length === 0) {
       getBooksList(1, "Novels");
     } else {
-      getBooksList(1, e.target.value || "");
+      getBooksList(1, e.target.value);
     }
   };
 
