@@ -105,7 +105,7 @@ function Home() {
               </div>
             }
             scrollableTarget="BooksList"
-            className="BooksListContainer"
+            className="InfiniteScrollDiv"
           >
             {booksList?.map(
               ({

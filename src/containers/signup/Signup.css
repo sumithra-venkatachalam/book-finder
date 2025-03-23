@@ -16,7 +16,7 @@
   margin-top: 20px;
   position: absolute;
   top: 13%;
-  left: 40%;
+  left: 36%;
   background-color: white;
   width: 400px;
   height: fit-content;
@@ -24,6 +24,7 @@
 }
 .parent {
   position: relative;
+  
 }
 
 .buttonContainer {
@@ -93,4 +94,16 @@
   padding-top: 4px;
   font-family: 'Noto Sans', sans-serif;
   font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .parent{
+    overflow: hidden;
+  }
+
+  .boxContainer{
+    left: 12%;
+    top: 20%;
+  }
+ 
 }

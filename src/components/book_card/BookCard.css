@@ -40,3 +40,9 @@
   font-size: 14px;
   color: rgb(117, 112, 112);
 }
+
+@media (max-width: 767px) {
+  .BookCardContainer{
+    width: 94%;
+  }
+}

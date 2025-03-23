@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { username } from '../../redux/usernameSlice';
+import { username, clearUsername } from '../../redux/usernameSlice';
 
 function Signup() {
   
   const [loginPassword, setLoginPassword] = useState('');
-  const [signupUsername, setSignupUsername] = useState('');
+  // const [signupUsername, setSignupUsername] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
   const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
   const [loginUsernameError, setLoginUsernameError] = useState('');
@@ -20,14 +20,14 @@ function Signup() {
   const name = useSelector((state) => state.username.value)
   const dispatch = useDispatch()
 
-  const loginUsernameFunc = (e) => {
+  const loginUsernameFunc = (e) => { 
     setUsername(e.target.value);
   };
   const loginPasswordFunc = (e) => {
     setLoginPassword(e.target.value);
   };
   const signupUsernameFunc = (e) => {
-    setSignupUsername(e.target.value);
+    dispatch(username(e.target.value))
   };
   const signupPasswordFunc = (e) => {
     setSignupPassword(e.target.value);
@@ -41,10 +41,12 @@ function Signup() {
 
   const signupClick = () => {
     setSignin('signup');
+    dispatch(clearUsername())
   };
 
   const loginClick = () => {
     setSignin('login');
+    dispatch(clearUsername())
   };
 
   const goToDomainListing2 = () => {
@@ -200,6 +202,7 @@ function Signup() {
                 type="text"
                 placeholder="Username"
                 required
+                value={name}
               />
               <span className="errorMessage">{signupUsernameError}</span>
               <input

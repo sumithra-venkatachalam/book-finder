@@ -51,3 +51,16 @@
   width: 46%;
   height: 150px;
 }
+
+.InfiniteScrollDiv {
+  overflow: hidden !important;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 767px) {
+   .InfiniteScrollDiv{
+    flex-direction: column;
+   }
+}

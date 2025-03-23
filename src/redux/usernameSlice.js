@@ -7,7 +7,7 @@ const usernameSlice = createSlice({
         username: (state, action) => {
             state.value = action.payload
         },
-        clearUsername: (state) => {
+        clearUsername: (state) => { 
             state.value = ""
         }
     }
